@@ -12,9 +12,6 @@ if (isset($_POST['password'])) {
         file_put_contents('data/data.json', json_encode(array('members' => $members)));
     }
 } 
-else {
-    
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
