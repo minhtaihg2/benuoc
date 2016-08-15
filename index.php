@@ -1,7 +1,6 @@
 <?php
 $imgBasePath = 'assets/img/';
-$members = json_decode(file_get_contents('data/data.json'))->members;
-
+$members = json_decode(file_get_contents('data/data2.json'))->members;
 if (isset($_POST['password'])) {
     if ($_POST['password'] == 'becaideogi') {
         foreach ($members as &$member) {
@@ -9,7 +8,7 @@ if (isset($_POST['password'])) {
         }
         
         // And the put updated info into JSON file
-        file_put_contents('data/data.json', json_encode(array('members' => $members)));
+        file_put_contents('data/data2.json', json_encode(array('members' => $members)));
     }
 } 
 ?>
@@ -20,7 +19,7 @@ if (isset($_POST['password'])) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Bê nước SD2</title>
+        <title>Bê nước SD2 - Team 1</title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -36,7 +35,7 @@ if (isset($_POST['password'])) {
         <![endif]-->
     </head>
 
-    <body  style="background:url('assets/img/snow.jpg');">
+    <body  style="background: url('assets/img/thu.jpg') no-repeat 100% 100%;background-size: 100% 100%;">
 
         <nav class="navbar navbar-inverse navbar-fixed-top php-nav">
             <div class="container">
@@ -61,7 +60,7 @@ if (isset($_POST['password'])) {
         <div class="container">
             <div id="pop">
                 <a href="#" data-primary>Chuẩn bị !</a>
-                <?php foreach ($members as $member):?>
+                <?php foreach ($members as $key => $member): ?>
                 <a href="#">
                     <img src="<?php echo $imgBasePath . $member->avatar?>" class="img-circle"/>
                 </a>
