@@ -1,6 +1,13 @@
 <?php
 $imgBasePath = 'assets/img/';
-$members = json_decode(file_get_contents('data/data2.json'))->members;
+
+//get team from url.
+$json = (isset($_GET['data'])) ? $_GET['data'] : 'data';
+
+//get Json
+$json = "data/".$json.".json";
+
+$members = json_decode(file_get_contents($json))->members;
 if (isset($_POST['password'])) {
     if ($_POST['password'] == 'becaideogi') {
         foreach ($members as &$member) {
@@ -8,7 +15,7 @@ if (isset($_POST['password'])) {
         }
         
         // And the put updated info into JSON file
-        file_put_contents('data/data2.json', json_encode(array('members' => $members)));
+        file_put_contents($json, json_encode(array('members' => $members)));
     }
 } 
 ?>
@@ -19,7 +26,7 @@ if (isset($_POST['password'])) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Bê nước SD2 - Team 1</title>
+        <title>Bê nước SD2 </title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
